@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace ShapeTracker.Models
 {
     public class Triangle
@@ -20,6 +22,11 @@ namespace ShapeTracker.Models
         public int GetSide3()
         {
             return _side3;
+        }
+
+        public void SetSide3(int length)
+        {
+            _side3 = length;
         }
 
     }
