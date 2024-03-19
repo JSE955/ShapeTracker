@@ -57,13 +57,53 @@ namespace ShapeTracker
       Console.WriteLine("-----------------------------------------");
       Console.WriteLine("Your result is: " + result + ".");
       Console.WriteLine("-----------------------------------------");
+      PromptUserResponse();
+    }
+
+    static void PrintAllTriangles()
+    {
+      foreach (Triangle tri in Triangle.GetAll())
+      {
+        Console.WriteLine("-----------------------------------------");
+        Console.WriteLine($"Type: {tri.CheckType()} | Side 1: {tri.Side1} | Side 2: {tri.Side2} | Side 3: {tri.GetSide3()}");
+        Console.WriteLine("-----------------------------------------");
+      }
+    }
+
+    static void ClearAllTriangles()
+    {
+      Triangle.ClearAll();
+      Console.WriteLine("-----------------------------------------");
+      Console.WriteLine("All triangles have been cleared.");
+      Console.WriteLine("-----------------------------------------");
+    }
+
+    static void DisplayUserOptions()
+    {
       Console.WriteLine("What's next?");
-      Console.WriteLine("Would you like to check a new triangle (new)?");
-      Console.WriteLine("Please enter 'new' to check the type of a new triangle. To exit, enter any key.");
+      Console.WriteLine("Please enter 'new' to check the type of a new triangle.");
+      Console.WriteLine("Please enter 'all' to display all triangles.");
+      Console.WriteLine("Please enter 'clear' to remove all triangles.");
+      Console.WriteLine("To exit, enter any other key.");
+    }
+
+    static void PromptUserResponse()
+    {
+      DisplayUserOptions();
       string userResponse = Console.ReadLine(); 
       if (userResponse == "new" || userResponse == "New")
       {
         Main();
+      }
+      else if (userResponse == "all" || userResponse == "All")
+      {
+        PrintAllTriangles();
+        PromptUserResponse();
+      }
+      else if (userResponse == "clear" || userResponse == "Clear")
+      {
+        ClearAllTriangles();
+        PromptUserResponse();
       }
       else
       {
